@@ -1,0 +1,49 @@
+<div>
+    <h1>Structure Directive Example</h1>
+    <h3>*ngIf</h3>
+    <div *ngIf="flag">
+        <h1>Welcome to *ngIf structure directive coding</h1>
+
+    </div>
+    <br/>
+    <input type="button" [value]="b1" (click)="fun()"/>
+    <h3>*ngFor Example</h3>
+    <h4>Students Names are :</h4>
+    <ol>
+        <li *ngFor="let std of stdNames">{{std}}</li>
+    </ol>
+    <br/>
+    <h2>Employee details are : </h2>
+    <table border="1">
+        <tr>
+            <th>EmpId</th>
+            <th>EmpName</th>
+            <th>EmpSalary</th>
+            <td>All Details </td>
+        </tr>
+        <tr *ngFor="let emp of empInfo">
+               <td>{{emp.empId}}</td>
+               <td>{{emp.empName | uppercase}}</td>
+               <td>{{emp.empSalary | currency}}</td> 
+               <td>{{emp | json}}</td>
+        </tr>
+    </table>
+    <h2>Attribute directive</h2>
+    <h3>ngStyle</h3>
+    <p [ngStyle]="{'color':'blue'}">Change color using local ngStyle attribute</p>
+    <p [ngStyle]="{'color':'orange','background-color':'yellow'}">Change color using local ngStyle attribute</p>
+    <p [ngStyle]="firstStyle">Change style using component variable</p>
+    <h2>ngClass</h2>
+    <p [ngClass]="abc">Change... style using ngClass attribute with class abc</p>
+    <p [ngClass]="{mno:f1,xyz:f2}">Change style using ngClass attribute with multiple classes</p>
+
+    <input type="button" [value]="b2" (click)="changeStyle()"/>
+    <br/>
+    <br/>
+    <br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+
+
+
+

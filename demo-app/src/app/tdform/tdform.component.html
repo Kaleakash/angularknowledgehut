@@ -1,0 +1,61 @@
+<div>
+    <div *ngIf="flag">
+        <app-sample></app-sample>
+    </div>
+    <input type="button" value="click here" (click)="fun()">
+    <br/>
+    <h2>Template driven form - Customer Info</h2>
+    <form #custInfo = "ngForm" 
+    (ngSubmit)="storeCustomerInfo(custInfo.value)" 
+    nonvalidate>
+        <label>Customer Id</label>
+        <input type="text" name="custId" ngModel required #custId="ngModel"
+        pattern="\d{3}"/>
+        <div *ngIf="custId.errors && (custId.dirty || custId.touched)">
+                <span [hidden]="!custId.errors.required" style="color:red;">
+                        Cust Id is required
+                </span>
+                <span [hidden]="!custId.errors.pattern" style="color:red;">
+                    Cust Id must be 3 digits
+            </span>
+        </div>
+        <br/>
+        <label>Customer Name</label>
+        <input type="text" name="custName" ngModel required #custName="ngModel"
+        minlength="4"/>
+        <div *ngIf="custName.errors && (custName.dirty || custName.touched)">
+            <span [hidden]="!custName.errors.required" style="color:red;">
+                    Cust Name is required
+            </span>
+            <span [hidden]="!custName.errors.minlength" style="color:red;">
+                Cust Id must be min 4 character
+        </span>
+    </div>
+        <br/>
+        <label>Customer Age</label>
+        <input type="text" name="custAge" ngModel required #custAge="ngModel"
+        pattern="(2[1-9]|[3-5][0-9]|60)"
+        />
+        <div *ngIf="custAge.errors && (custAge.dirty || custAge.touched)">
+            <span [hidden]="!custAge.errors.required" style="color:red;">
+                    Cust Age is required
+            </span>
+            <span [hidden]="!custAge.errors.pattern" style="color:red;">
+                Cust age must be between 21 and 60
+                <!--
+                    http://gamon.webfactional.com/regexnumericrangegenerator/
+                -->
+        </span>
+    </div>
+    <br/>
+    <label>Gender</label>
+    <input type="radio" name="gender" ngModel value="Male">:Male
+    
+    <input type="radio" name="gender" ngModel value="FeMale">:FeMale
+        <br/>
+        <input type="submit" value="Store Customer Info"
+        [disabled]="!custInfo.valid"/>
+    </form>
+    <br/>
+    Customer Details are : {{custDetails}}
+</div>

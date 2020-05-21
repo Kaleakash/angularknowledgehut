@@ -1,0 +1,40 @@
+<div>
+    <h2>Data Binding</h2>
+    <h3>One way data binding using String interpolation</h3>
+    First Name is {{fname}}<br/>
+<h3>One way data bidign using property binding</h3>
+    Age is <input type="text" [value]="age"/><br/>
+    Age is <span [innerText]="age"></span>
+    <br/>
+<input type="button" value="Property Binding" [disabled]="result"/>
+<input type="button" value="String interpolation" disabled="{{result}}"/>
+<br/>
+<h3>Event Biding - one way data binding</h3>
+<input type="button" value="click here" (click)="fun()"/>
+<br/>
+Salary is {{salary}}
+<h2>Two way data binding using ngModel Attribute</h2>
+Desg is {{desg}}<br/>
+Property binding : <input type="text" [value]="desg"><br/>
+<!--
+Two way binding : <input [(ngModel)]="desg">
+-->
+<h2>Two way data bindign without ngModel using template reference </h2>
+Skill Set : <input type="text" #skillInfo (keyup)="0"><br/>
+Skill Info {{skillInfo.value}}
+<br/>
+Sum of two number
+<br/> 
+1st Number :<input type="text" #n1><br/>
+2nd Number :<input type="text" #n2><br/>
+Result : {{sum}}<br/>
+<input type="button" value="AddNumber"
+(click)="addNumber(n1.value,n2.value)"/>
+<br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+
+
+

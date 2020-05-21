@@ -1,0 +1,43 @@
+<div>
+    <h2>Reactive Form - Customer Info</h2>
+    <form [formGroup]="custInfo">
+        <label>CustId</label>
+        <input type="text" formControlName="custId"> 
+        
+        <div *ngIf="!custInfo.controls.custId?.valid && (custInfo.controls.custId?.dirty || custInfo.controls.custId?.touched)">
+             <span [hidden]="!custInfo.controls.custId.errors.required" style="color:greenyellow">
+                CustId must be required
+        </span>
+        <span [hidden]="!custInfo.controls.custId.errors.pattern" style="color:greenyellow">
+                CustId must be 3 digit
+        </span> 
+         </div>
+        <br/>
+        <label>CustName</label>
+        <input type="text" formControlName="custName">
+        <div *ngIf="!custInfo.controls.custName?.valid && (custInfo.controls.custName?.dirty || custInfo.controls.custName?.touched)">
+            <span [hidden]="!custInfo.controls.custName.errors.required" style="color:greenyellow">
+               UserName must be required
+       </span>
+       <span [hidden]="!custInfo.controls.custName.errors.minlength" style="color:greenyellow">
+                UserName must be 4 character
+       </span> 
+        </div>
+        <br/>
+        <label>CustAge</label>
+        <input type="text" formControlName="custAge">  
+        <div *ngIf="!custInfo.controls.custAge?.valid && (custInfo.controls.custAge?.dirty || custInfo.controls.custAge?.touched)">
+            <span [hidden]="!custInfo.controls.custAge.errors.required" style="color:greenyellow">
+               Age must be required
+       </span>
+       <span [hidden]="!custInfo.controls.custAge.errors.pattern" style="color:greenyellow">
+                Age must be in between 21 to 60
+       </span> 
+        </div>
+        <br/>
+        <input type="button" value="Store Customer Info" (click)="storeCustInfo()"
+        [disabled]="!custInfo.valid"/>
+    </form>
+    <br/>
+    Customer Details are : {{custDetails}}
+</div>
